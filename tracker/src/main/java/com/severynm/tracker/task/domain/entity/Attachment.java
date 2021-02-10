@@ -4,6 +4,7 @@ package com.severynm.tracker.task.domain.entity;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Table;
 import java.net.URL;
@@ -14,7 +15,7 @@ import java.util.Objects;
 public class Attachment {
 
     @Id
-    @GeneratedValue
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "PK_ATTACHMENT_ID")
     private Long attachmentId;
 
@@ -24,7 +25,7 @@ public class Attachment {
     @Column(name = "LINK")
     private URL link;
 
-    @Column(name = "TASK_ID")
+    @Column(name = "FK_TASK_ID")
     private Long taskId;
 
     public Long getAttachmentId() {
@@ -64,12 +65,12 @@ public class Attachment {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
         Attachment that = (Attachment) o;
-        return Objects.equals(link, that.link);
+        return Objects.equals(name, that.name) && Objects.equals(link, that.link) && Objects.equals(taskId, that.taskId);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(link);
+        return Objects.hash(name, link, taskId);
     }
 
     @Override

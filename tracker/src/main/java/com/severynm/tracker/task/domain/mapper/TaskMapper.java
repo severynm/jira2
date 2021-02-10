@@ -8,7 +8,7 @@ import org.mapstruct.Mapper;
 import org.mapstruct.Mapping;
 
 @Mapper(componentModel = "spring",
-        uses = {CommentMapper.class, AttachmentMapper.class})
+        uses = {CommentMapper.class, AttachmentMapper.class, UserMapper.class})
 public interface TaskMapper {
 
     @Mapping(target = "author.userId", source = "authorId")

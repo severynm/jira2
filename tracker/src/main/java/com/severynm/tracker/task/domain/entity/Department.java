@@ -3,6 +3,7 @@ package com.severynm.tracker.task.domain.entity;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Table;
 import java.util.Objects;
@@ -12,7 +13,7 @@ import java.util.Objects;
 public class Department {
 
     @Id
-    @GeneratedValue
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "PK_DEPARTMENT_ID")
     private Long departmentId;
 
